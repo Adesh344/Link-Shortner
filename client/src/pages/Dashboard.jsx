@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { api } from '../api';
 import toast from 'react-hot-toast';
 import LinkCard from '../components/LinkCard';
 import { Plus, Link as LinkIcon } from 'lucide-react';
@@ -18,9 +19,13 @@ const Dashboard = () => {
     fetchLinks();
   }, []);
 
+
+  
+  
+
   const fetchLinks = async () => {
     try {
-      const response = await axios.get('/api/links');
+      const response = await api.get('/api/links');
       setLinks(response.data.data);
     } catch (error) {
       toast.error('Failed to fetch links');
@@ -41,7 +46,7 @@ const Dashboard = () => {
     setSubmitting(true);
 
     try {
-      const response = await axios.post('/api/links', formData);
+      const response = await api.post('/api/links', formData);
       setLinks([response.data.data, ...links]);
       setFormData({ originalUrl: '', customCode: '' });
       setShowForm(false);
@@ -59,7 +64,7 @@ const Dashboard = () => {
     }
 
     try {
-      await axios.delete(`/api/links/${id}`);
+      await api.delete(`/api/links/${id}`);
       setLinks(links.filter(link => link._id !== id));
       toast.success('Link deleted successfully');
     } catch (error) {
