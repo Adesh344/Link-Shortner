@@ -2,7 +2,7 @@
 A fast, secure, and modern URL shortening platform with user authentication, link tracking, and a polished UI.
 
 🔗 **Live Demo:** https://link-shortner-liard.vercel.app/  
-📦 **Backend API:** _(add your backend link if deployed)_
+
 
 ---
 
